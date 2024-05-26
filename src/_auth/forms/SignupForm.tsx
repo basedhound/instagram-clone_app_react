@@ -14,8 +14,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Loader from "@/components/shared/loader";
+//
 import { SignupValidation } from "@/lib/validation";
 
+
+// SIgnupForm component
 const SignupForm = () => {
   const isLoading = false;
 
@@ -31,10 +34,9 @@ const SignupForm = () => {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof SignupValidation>) {
+    // const newUser = await createUserAccount(values);
+    
   }
 
   return (
