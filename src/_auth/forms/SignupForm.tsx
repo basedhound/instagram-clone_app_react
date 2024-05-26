@@ -14,12 +14,16 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Loader from "@/components/shared/loader";
+import { useToast } from "@/components/ui/use-toast";
+
 //
 import { SignupValidation } from "@/lib/validation";
+import { createUserAccount } from "@/lib/appwrite/api";
 
 
 // SIgnupForm component
 const SignupForm = () => {
+  const { toast } = useToast(); // Toast hook
   const isLoading = false;
 
   // Form schema
@@ -35,7 +39,18 @@ const SignupForm = () => {
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof SignupValidation>) {
-    // const newUser = await createUserAccount(values);
+    const newUser = await createUserAccount(values);
+
+    if (!newUser) {
+      toast({ title: "Sign up failed. Please try again.", });      
+      return;
+    }
+
+    // const session = await signInAccount({
+    //   email: user.email,
+    //   password: user.password,
+    // });
+    
     
   }
 
