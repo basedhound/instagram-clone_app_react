@@ -1,24 +1,24 @@
-import { Link, /* NavLink, */ /* useLocation, */ useNavigate } from "react-router-dom";
-
-// import { INavLink } from "@/types";
-// import { sidebarLinks } from "@/constants";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+//
 import { Loader } from "@/components/shared";
 import { Button } from "@/components/ui/button";
-// import { useSignOutAccount } from "@/lib/react-query/queries";
+//
+import { INavLink } from "@/types";
+import { sidebarLinks } from "@/constants";
 import { useUserContext, INITIAL_USER } from "@/context/AuthContext";
+import { useSignOutAccount } from "@/lib/react-query/queriesAndMutations";
 
 const LeftSidebar = () => {
   const navigate = useNavigate();
-  // const { pathname } = useLocation();
+  const { pathname } = useLocation();
   const { user, setUser, setIsAuthenticated, isLoading } = useUserContext();
-
-  // const { mutate: signOut } = useSignOutAccount();
+  const { mutate: signOut } = useSignOutAccount();
 
   const handleSignOut = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
-    // signOut();
+    signOut();
     setIsAuthenticated(false);
     setUser(INITIAL_USER);
     navigate("/sign-in");
@@ -54,8 +54,8 @@ const LeftSidebar = () => {
           </Link>
         )}
 
-        <ul className="flex flex-col gap-6">
-{/*           {sidebarLinks.map((link: INavLink) => {
+<ul className="flex flex-col gap-6">
+          {sidebarLinks.map((link: INavLink) => {
             const isActive = pathname === link.route;
 
             return (
@@ -78,7 +78,7 @@ const LeftSidebar = () => {
                 </NavLink>
               </li>
             );
-          })} */}
+          })}
         </ul>
       </div>
 
