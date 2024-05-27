@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { createContext, useContext, useEffect, useState } from "react";
-
+//
 import { IUser } from "@/types";
 import { getCurrentUser } from "@/lib/appwrite/api";
 
+// Define the initial user object
 export const INITIAL_USER = {
   id: "",
   name: "",
@@ -13,6 +14,7 @@ export const INITIAL_USER = {
   bio: "",
 };
 
+// Define the initial state
 const INITIAL_STATE = {
   user: INITIAL_USER,
   isLoading: false,
@@ -22,6 +24,7 @@ const INITIAL_STATE = {
   checkAuthUser: async () => false as boolean,
 };
 
+// Define the context type
 type IContextType = {
   user: IUser;
   isLoading: boolean;
@@ -31,14 +34,17 @@ type IContextType = {
   checkAuthUser: () => Promise<boolean>;
 };
 
+// Create the context
 const AuthContext = createContext<IContextType>(INITIAL_STATE);
 
+// Create the provider
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
   const [user, setUser] = useState<IUser>(INITIAL_USER);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  // Check if the user is authenticated
   const checkAuthUser = async () => {
     setIsLoading(true);
     try {
@@ -62,21 +68,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       console.error(error);
       return false;
     } finally {
-      setIsLoading(false);
+      setIsLoading(false); // done with loading
     }
   };
 
+  // What we want to call everytime we reload our page
   useEffect(() => {
     const cookieFallback = localStorage.getItem("cookieFallback");
     if (
-      cookieFallback === "[]" ||
-      cookieFallback === null ||
-      cookieFallback === undefined
+      cookieFallback === "[]" 
+      // cookieFallback === null ||
+      // cookieFallback === undefined
     ) {
-      navigate("/sign-in");
+      navigate("/sign-in"); 
     }
-
-    checkAuthUser();
+    checkAuthUser(); // check if the user is authenticated
   }, []);
 
   const value = {
