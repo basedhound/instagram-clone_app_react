@@ -10,33 +10,36 @@ import {
   useGetCurrentUser,
 } from "@/lib/react-query/queriesAndMutations";
 
-//!
+// TypeScript
 type PostStatsProps = {
   post: Models.Document;
   userId: string;
 };
 
+//!
 const PostStats = ({ post, userId }: PostStatsProps) => {
   const location = useLocation();
-  const likesList = post.likes.map((user: Models.Document) => user.$id);
+  const { data: currentUser } = useGetCurrentUser();
 
+  // Liked and Saved
+  const likesList = post.likes.map((user: Models.Document) => user.$id);
   const [likes, setLikes] = useState<string[]>(likesList);
   const [isSaved, setIsSaved] = useState(false);
 
+  // Queries
   const { mutate: likePost } = useLikePost();
   const { mutate: savePost } = useSavePost();
   const { mutate: deleteSavePost } = useDeleteSavedPost();
 
-  const { data: currentUser } = useGetCurrentUser();
-
+  // Check if post is saved
   const savedPostRecord = currentUser?.save.find(
     (record: Models.Document) => record.post.$id === post.$id
   );
-
   useEffect(() => {
     setIsSaved(!!savedPostRecord);
   }, [currentUser]);
 
+  // Handle Liked Post
   const handleLikePost = (
     e: React.MouseEvent<HTMLImageElement, MouseEvent>
   ) => {
@@ -54,6 +57,7 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
     likePost({ postId: post.$id, likesArray });
   };
 
+  // Handle Saved Post
   const handleSavePost = (
     e: React.MouseEvent<HTMLImageElement, MouseEvent>
   ) => {
@@ -68,6 +72,7 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
     setIsSaved(true);
   };
 
+  // Styles
   const containerStyles = location.pathname.startsWith("/profile")
     ? "w-full"
     : "";
