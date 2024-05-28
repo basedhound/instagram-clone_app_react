@@ -1,3 +1,5 @@
+// Connect 1 key to 1 string
+// Useful to prevent typo errors in queriesAndMutations.ts
 export enum QUERY_KEYS {
   // AUTH KEYS
   CREATE_USER_ACCOUNT = "createUserAccount",
