@@ -1,6 +1,8 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+//
 
+//
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -26,7 +28,7 @@ export function formatDateString(dateString: string) {
   return `${formattedDate} at ${time}`;
 }
 
-// 
+// PostCard.tsx
 export const multiFormatDateString = (timestamp: string = ""): string => {
   const timestampNum = Math.round(new Date(timestamp).getTime() / 1000);
   const date: Date = new Date(timestampNum * 1000);
@@ -54,6 +56,7 @@ export const multiFormatDateString = (timestamp: string = ""): string => {
   }
 };
 
+//
 export const checkIsLiked = (likeList: string[], userId: string) => {
   return likeList.includes(userId);
 };

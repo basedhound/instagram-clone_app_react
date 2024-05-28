@@ -10,10 +10,9 @@ type PostCardProps = {
   post: Models.Document;
 };
 
-//! 
+//!
 const PostCard = ({ post }: PostCardProps) => {
   const { user } = useUserContext();
-
   if (!post.creator) return;
 
   return (
@@ -78,7 +77,7 @@ const PostCard = ({ post }: PostCardProps) => {
         />
       </Link>
 
-      {/* <PostStats post={post} userId={user.id} /> */}
+      <PostStats post={post} userId={user.id} />
     </div>
   );
 };
