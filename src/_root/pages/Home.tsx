@@ -7,14 +7,15 @@ import { useGetRecentPosts, useGetUsers } from "@/lib/react-query/queriesAndMuta
 const Home = () => {
   // const { toast } = useToast();
 
+  // Call queries
   const {
     data: posts,
-    isLoading: isPostLoading,
+    isPending: isPostLoading,
     isError: isErrorPosts,
   } = useGetRecentPosts();
   const {
     data: creators,
-    isLoading: isUserLoading,
+    isPending: isUserLoading,
     isError: isErrorCreators,
   } = useGetUsers(10);
 
