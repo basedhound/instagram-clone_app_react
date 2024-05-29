@@ -38,11 +38,11 @@ const PostForm = ({ post, action }: PostFormProps) => {
   const { toast } = useToast();
   const { user } = useUserContext();
 
-  // Query
+  // Queries
   const { mutateAsync: createPost, isPending: isLoadingCreate } =
     useCreatePost();
-/*   const { mutateAsync: updatePost, isPending: isLoadingUpdate } =
-    useUpdatePost(); */
+  const { mutateAsync: updatePost, isPending: isLoadingUpdate } =
+    useUpdatePost();
 
   // Zod form validation
   const form = useForm<z.infer<typeof PostValidation>>({
@@ -58,7 +58,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
  // Handler
  const handleSubmit = async (value: z.infer<typeof PostValidation>) => {
   // ACTION = UPDATE
-/*   if (post && action === "Update") {
+  if (post && action === "Update") {
     const updatedPost = await updatePost({
       ...value,
       postId: post.$id,
@@ -72,7 +72,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
       });
     }
     return navigate(`/posts/${post.$id}`);
-  } */
+  }
 
   // ACTION = CREATE
   const newPost = await createPost({
@@ -163,17 +163,17 @@ const PostForm = ({ post, action }: PostFormProps) => {
           <Button
             type="button"
             className="shad-button_dark_4"
-            /* onClick={() => navigate(-1)} */
+            onClick={() => navigate(-1)}
           >
             Cancel
           </Button>
           <Button
             type="submit"
             className="shad-button_primary whitespace-nowrap"
-            /* disabled={isLoadingCreate || isLoadingUpdate} */
+            disabled={isLoadingCreate || isLoadingUpdate}
           >
-            {/* {(isLoadingCreate || isLoadingUpdate) && <Loader />} */}
-            {/* {action} */} Post
+             {(isLoadingCreate || isLoadingUpdate) && <Loader />} 
+             {action}  Post
           </Button>
         </div>
       </form>
