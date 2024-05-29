@@ -9,6 +9,7 @@ import {
   useDeleteSavedPost,
   useGetCurrentUser,
 } from "@/lib/react-query/queriesAndMutations";
+import { Loader } from ".";
 
 // TypeScript
 type PostStatsProps = {
@@ -21,16 +22,18 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
   const location = useLocation();
   const { data: currentUser } = useGetCurrentUser();
 
-  // Liked and Saved
+  // Map Likes
   const likesList = post.likes.map((user: Models.Document) => user.$id);
+
+  // useStates
   const [likes, setLikes] = useState<string[]>(likesList);
   const [isSaved, setIsSaved] = useState(false);
 
   // Queries
   const { mutate: likePost } = useLikePost();
-  const { mutate: savePost } = useSavePost();
-  const { mutate: deleteSavePost } = useDeleteSavedPost();
-
+  const { mutate: savePost, isPending: isSavingPost } = useSavePost();
+  const { mutate: deleteSavedPost, isPending: isDeletingSaved } = useDeleteSavedPost();
+  
   // Check if post is saved
   const savedPostRecord = currentUser?.save.find(
     (record: Models.Document) => record.post.$id === post.$id
@@ -43,7 +46,7 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
   const handleLikePost = (
     e: React.MouseEvent<HTMLImageElement, MouseEvent>
   ) => {
-    e.stopPropagation();
+    e.stopPropagation(); // Prevents to toggle other clickable elements
 
     let likesArray = [...likes];
 
@@ -61,11 +64,11 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
   const handleSavePost = (
     e: React.MouseEvent<HTMLImageElement, MouseEvent>
   ) => {
-    e.stopPropagation();
+    e.stopPropagation(); // Prevents to toggle other clickable elements
 
     if (savedPostRecord) {
       setIsSaved(false);
-      return deleteSavePost(savedPostRecord.$id);
+      return deleteSavedPost(savedPostRecord.$id);
     }
 
     savePost({ userId: userId, postId: post.$id });
@@ -97,6 +100,7 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
       </div>
 
       <div className="flex gap-2">
+        {isSavingPost || isDeletingSaved ? <Loader/> :
         <img
           src={isSaved ? "/assets/icons/saved.svg" : "/assets/icons/save.svg"}
           alt="share"
@@ -104,7 +108,7 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
           height={20}
           className="cursor-pointer"
           onClick={(e) => handleSavePost(e)}
-        />
+        />}
       </div>
     </div>
   );
