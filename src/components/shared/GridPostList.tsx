@@ -4,17 +4,20 @@ import { Link } from "react-router-dom";
 import { PostStats } from "@/components/shared";
 import { useUserContext } from "@/context/AuthContext";
 
+// TypeScript
 type GridPostListProps = {
   posts: Models.Document[];
   showUser?: boolean;
   showStats?: boolean;
 };
 
+//!
 const GridPostList = ({
   posts,
   showUser = true,
   showStats = true,
 }: GridPostListProps) => {
+  // Get the user from the context
   const { user } = useUserContext();
 
   return (
