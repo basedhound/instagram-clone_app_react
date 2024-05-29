@@ -57,7 +57,7 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
     }
 
     setLikes(likesArray);
-    likePost({ postId: post.$id, likesArray });
+    likePost({ postId: post?.$id || '' , likesArray });
   };
 
   // Handle Saved Post
@@ -71,7 +71,7 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
       return deleteSavedPost(savedPostRecord.$id);
     }
 
-    savePost({ userId: userId, postId: post.$id });
+    savePost({ userId: userId, postId: post?.$id || '' });
     setIsSaved(true);
   };
 
