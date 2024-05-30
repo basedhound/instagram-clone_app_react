@@ -1,10 +1,10 @@
 import { GridPostList, Loader } from "@/components/shared";
-import { Models } from "appwrite";
+// import { Models } from "appwrite";
 
 // TypeScript
 type SearchResultProps = {
   isSearchFetching: boolean;
-  searchedPosts: Models.Document[]; // or any
+  searchedPosts:  any // Models.DocumentList;
 };
 
 //!
