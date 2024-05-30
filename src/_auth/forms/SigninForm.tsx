@@ -6,8 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import Loader from "@/components/shared/Loader";
 import { useToast } from "@/components/ui/use-toast";
+import { Loader } from "@/components/shared";
 //
 import { SigninValidation } from "@/lib/validation";
 import { useUserContext } from "@/context/AuthContext";
