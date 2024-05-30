@@ -36,7 +36,7 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
   
   // Check if post is saved
   const savedPostRecord = currentUser?.save.find(
-    (record: Models.Document) => record.post.$id === post.$id
+    (record: Models.Document) => record.post?.$id === post.$id
   );
   useEffect(() => {
     setIsSaved(!!savedPostRecord);
