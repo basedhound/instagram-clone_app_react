@@ -1,6 +1,6 @@
 <div align="center">
     <a href="https://snapgram-fv.vercel.app" target="_blank">
-      <img src="public/preview.webp" alt="Project Banner">
+      <img src="public/design/preview.png" alt="Project Banner">
     </a>
   <h3 align="center">Instagram Clone</h3>
 </div>
@@ -20,19 +20,17 @@
 
 ##  <br /> <a name="tech-stack">⚙️ Tech Stack</a>
 
-- **React** is a popular JavaScript library for building user interfaces, particularly single-page applications where data changes over time. React's component-based architecture allows developers to create reusable UI components, making development more efficient and the codebase easier to maintain. Its virtual DOM enhances performance by minimizing direct interactions with the browser's DOM.
+- [**React**](https://react.dev/reference/react) is a popular JavaScript library for building user interfaces, particularly single-page applications where data changes over time. React's component-based architecture allows developers to create reusable UI components, making development more efficient and the codebase easier to maintain. Its virtual DOM enhances performance by minimizing direct interactions with the browser's DOM.
 
-- **Next.js** is a React framework known for its server-side rendering (SSR) and static site generation (SSG) capabilities, enhancing performance and SEO for web applications. It offers features like automatic code splitting, API routes for server-side logic, and a plugin system for extensibility.
+- [**Appwrite**](https://appwrite.io/docs) is an open-source backend platform that offers a wide range of backend services including authentication, database management, file storage, and cloud functions. It is designed to simplify backend development for web and mobile applications, providing a unified API and robust security features. Appwrite supports scalability and real-time updates, making it suitable for a variety of application use cases.
 
-- **Appwrite** is an open-source backend platform that offers a wide range of backend services including authentication, database management, file storage, and cloud functions. It is designed to simplify backend development for web and mobile applications, providing a unified API and robust security features. Appwrite supports scalability and real-time updates, making it suitable for a variety of application use cases.
+- [**React Query**](https://tanstack.com/query/latest/docs/framework/react/overview) is a powerful data-fetching library for React applications that simplifies data synchronization and caching. It enhances user experience by managing server state, providing features like automated caching, background updates, and stale data handling. React Query's built-in hooks and dev tools offer an intuitive API and debugging capabilities, making data management efficient and seamless.
 
-- **React Query** is a powerful data-fetching library for React applications that simplifies data synchronization and caching. It enhances user experience by managing server state, providing features like automated caching, background updates, and stale data handling. React Query's built-in hooks and dev tools offer an intuitive API and debugging capabilities, making data management efficient and seamless.
+- [**TypeScript**](https://www.typescriptlang.org/docs/) is a statically typed superset of JavaScript that allows for early detection of errors and more robust, maintainable code. TypeScript's type system helps developers catch mistakes early during the development process, ensuring a more stable and reliable application.
 
-- **TypeScript** is a statically typed superset of JavaScript that allows for early detection of errors and more robust, maintainable code. TypeScript's type system helps developers catch mistakes early during the development process, ensuring a more stable and reliable application.
+- [**Tailwind**](https://v2.tailwindcss.com/docs) is a utility-first CSS framework that speeds up UI development by providing a set of pre-built utility classes. It allows developers to quickly build custom designs without writing traditional CSS, promoting rapid prototyping and design consistency.
 
-- **Tailwind** is a utility-first CSS framework that speeds up UI development by providing a set of pre-built utility classes. It allows developers to quickly build custom designs without writing traditional CSS, promoting rapid prototyping and design consistency.
-
-- **shadcn/ui** is as comprehensive React component library designed for creating modern and responsive user interfaces. ShadCN offers a wide range of pre-built, customizable components that adhere to best practices for accessibility and performance. Its intuitive API and well-documented components enable developers to build consistent and aesthetically pleasing UIs with ease.
+- [**shadcn/ui**](https://ui.shadcn.com/docs) is as comprehensive React component library designed for creating modern and responsive user interfaces. ShadCN offers a wide range of pre-built, customizable components that adhere to best practices for accessibility and performance. Its intuitive API and well-documented components enable developers to build consistent and aesthetically pleasing UIs with ease.
 
 
 ## <br/> <a name="features">📝 Features</a>
